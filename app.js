@@ -19,6 +19,8 @@ request({ url: geocodingUrl, json: true }, (err, res) => {
         console.log('Unable to connect to weather service');
     } else if (res.body.message) {
         console.log(res.body.message);
+    } else if (res.body.features.length < 1) {
+        console.log('Nothing Found!!!');
     } else {
         const data = res.body.features[0];
         console.log(`Latitude: ${data.center[0]} and Longitude: ${data.center[1]}`);
